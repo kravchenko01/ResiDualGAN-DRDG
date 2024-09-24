@@ -10,7 +10,7 @@ import sys
 import os
 import torch.nn as nn
 
-def get_model(model_type, encoder_name="resnet34", encoder_weights="imagenet", in_channels=3, classes=6):
+def get_model(model_type, encoder_name="resnet34", encoder_weights="imagenet", in_channels=3, classes=2):
     model = None
     if model_type == "UNet":
         model = smp.Unet(
@@ -52,7 +52,7 @@ def adjust_param(cur_epoch, total_epoch):
     return math.exp(-5*((1-t)**2))
 
 
-def iou(output, target, n_classes=6):
+def iou(output, target, n_classes=2):
     smooth = 1e-5
     ious = []
     output = output.argmax(dim=1)
@@ -62,11 +62,11 @@ def iou(output, target, n_classes=6):
         intersection = (pred_inds[target_inds]).sum()
         union = pred_inds.sum() + target_inds.sum() - intersection
         ious.append((float(intersection)+smooth)/ (float(union) + smooth))
-    ious.append(sum(ious)/6)
+    ious.append(sum(ious) / n_classes)
     return np.array(ious)*100
 
 
-def tp(output, target, n_classes=6):
+def tp(output, target, n_classes=2):
     res = []
     for cls in range(n_classes):
         pred_inds = output == cls
@@ -75,7 +75,7 @@ def tp(output, target, n_classes=6):
     return np.array(res).astype(float)
 
 
-def fp(output, target, n_classes=6):
+def fp(output, target, n_classes=2):
     res = []
     for cls in range(n_classes):
         pred_inds = output == cls
@@ -84,7 +84,7 @@ def fp(output, target, n_classes=6):
     return np.array(res).astype(float)
 
 
-def fn(output, target, n_classes=6):
+def fn(output, target, n_classes=2):
     res = []
     for cls in range(n_classes):
         pred_inds = output != cls
@@ -93,7 +93,7 @@ def fn(output, target, n_classes=6):
     return np.array(res).astype(float)
 
 
-def tf(output, target, n_classes=6):
+def tf(output, target, n_classes=2):
     res = []
     for cls in range(n_classes):
         pred_inds = output != cls
@@ -102,12 +102,12 @@ def tf(output, target, n_classes=6):
     return np.array(res).astype(float)
 
 
-def f1(output, target, n_classes=6):
+def f1(output, target, n_classes=2):
     smooth = 1e-5
     output = output.argmax(dim=1)
     f1 = (2*tp(output, target, n_classes) + smooth)/\
-        (2*tp(output, target, n_classes)+fp(output, target, n_classes)+fn(output, target, n_classes) + smooth)
-    f1 = np.append(f1, np.sum(f1)/6)
+        (2*tp(output, target, n_classes)+fp(output, target, n_classes) + fn(output, target, n_classes) + smooth)
+    f1 = np.append(f1, np.sum(f1) / n_classes)
     return f1*100
 
 
