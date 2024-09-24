@@ -72,7 +72,7 @@ def tp(output, target, n_classes=6):
         pred_inds = output == cls
         target_inds = target == cls
         res.append(float(pred_inds[target_inds].sum()))
-    return np.array(res).astype(np.float)
+    return np.array(res).astype(float)
 
 
 def fp(output, target, n_classes=6):
@@ -81,7 +81,7 @@ def fp(output, target, n_classes=6):
         pred_inds = output == cls
         target_inds = target != cls
         res.append(float(pred_inds[target_inds].sum()))
-    return np.array(res).astype(np.float)
+    return np.array(res).astype(float)
 
 
 def fn(output, target, n_classes=6):
@@ -90,7 +90,7 @@ def fn(output, target, n_classes=6):
         pred_inds = output != cls
         target_inds = target == cls
         res.append(float(pred_inds[target_inds].sum()))
-    return np.array(res).astype(np.float)
+    return np.array(res).astype(float)
 
 
 def tf(output, target, n_classes=6):
@@ -99,7 +99,7 @@ def tf(output, target, n_classes=6):
         pred_inds = output != cls
         target_inds = target != cls
         res.append(float(pred_inds[target_inds].sum()))
-    return np.array(res).astype(np.float)
+    return np.array(res).astype(float)
 
 
 def f1(output, target, n_classes=6):
