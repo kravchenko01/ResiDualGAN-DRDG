@@ -152,8 +152,8 @@ def train(cfg):
         # validation using images of target domain
 
         val_loss = 0
-        iou_sum = np.zeros((7,))
-        f1_sum = np.zeros((7,))
+        iou_sum = np.zeros((3,))
+        f1_sum = np.zeros((3,))
         model.eval()
         discriminator.eval()
         with torch.no_grad():
