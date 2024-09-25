@@ -32,8 +32,8 @@ def seg_eval_once(model, dataset, logger, save_path, batch_size = 1, generate_re
     dataset.get_file_name = True
     dataloader = get_test_loader(dataset, batch_size)
     model.eval()
-    iou_sum = np.zeros((7,))
-    f1_sum = np.zeros((7,))
+    iou_sum = np.zeros((3,))
+    f1_sum = np.zeros((3,))
     palette = get_palette(dataset)
     os.makedirs(f"{save_path}/res", exist_ok=True)
     for i, (file_name, input, target) in enumerate(dataloader):
