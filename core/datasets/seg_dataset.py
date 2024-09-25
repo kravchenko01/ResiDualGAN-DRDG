@@ -42,29 +42,42 @@ class SegDataset(D.Dataset):
         else:
             self.len = self.iter_len
         
+        # self.label2train = [
+        #             [0, 255],
+        #             [1, 0],
+        #             [2, 1],
+        #             [3, 2],
+        #             [4, 3],
+        #             [5, 4],
+        #             [6, 5]]
+        
+        # self.palette = [
+        #             [255,0,0],
+        #             [255,255,255],
+        #             [255,255,0],
+        #             [0,255,0],
+        #             [0,255,255],
+        #             [0,0,255]]
+        
+        # self.label = [
+        #             "Clutter background",
+        #             "Imprevious surfaces",
+        #             "Car",
+        #             "Tree",
+        #             "Low vegetation",
+        #             "Building"]
+
         self.label2train = [
                     [0, 255],
                     [1, 0],
-                    [2, 1],
-                    [3, 2],
-                    [4, 3],
-                    [5, 4],
-                    [6, 5]]
+                    [2, 1]]
         
         self.palette = [
                     [255,0,0],
-                    [255,255,255],
-                    [255,255,0],
-                    [0,255,0],
-                    [0,255,255],
-                    [0,0,255]]
+                    [255,255,255]]
         
         self.label = [
                     "Clutter background",
-                    "Imprevious surfaces",
-                    "Car",
-                    "Tree",
-                    "Low vegetation",
                     "Building"]
         
         self.get_file_name = False
