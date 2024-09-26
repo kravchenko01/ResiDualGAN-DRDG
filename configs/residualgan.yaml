@@ -12,7 +12,7 @@ DATASETS:
   # TARGET_PATH: "./datasets/Vaihingen_dsm"
   TARGET_PATH: "./datasets/our"
   SOURCE_SIZE: 896
-  TARGET_SIZE: 112
+  TARGET_SIZE: 256
 LOSS:
   ADV: 5
   CYCLE: 10
