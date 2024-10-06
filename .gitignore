@@ -4,7 +4,7 @@
 /output
 /outputs
 /datasets
-/res
+/res*
 *.pyc
 log.txt
 /datasets
