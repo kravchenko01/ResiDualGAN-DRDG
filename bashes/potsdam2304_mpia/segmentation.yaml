@@ -12,7 +12,7 @@ TRAIN:
   LR: 0.0002
 
 DATASETS:
-  SIZE: 672
+  SIZE: 512
   SOURCE_DATASET_PATH: "./res/dualgan/rdg_pi/data"
   SOURCE_PART: "all"
   # TARGET_DATASET_PATH: "./datasets/Vaihingen"
