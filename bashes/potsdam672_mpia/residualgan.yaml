@@ -12,8 +12,8 @@ DATASETS:
   SOURCE_PATH: "./datasets/potsdam"
   # TARGET_PATH: "./datasets/Vaihingen_dsm"
   TARGET_PATH: "./datasets/our"
-  SOURCE_SIZE: 672
-  TARGET_SIZE: 672
+  SOURCE_SIZE: 640
+  TARGET_SIZE: 640
 LOSS:
   # ADV: 5
   ADV: 1
